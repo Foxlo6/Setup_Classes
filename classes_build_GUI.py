@@ -2,11 +2,13 @@ import tkinter as tk
 import classes_build_classes as c
 
 def objekt_erstellen_gui():
+    anzahl = int
     def generiere_felder():
         for widget in frame.winfo_children():
             widget.destroy()
 
         try:
+            nonlocal anzahl
             anzahl = int(entry_anzahl.get())
         except ValueError:
             label_info.config(text="Bitte eine gültige Zahl eingeben!", fg="red")
@@ -23,7 +25,8 @@ def objekt_erstellen_gui():
         tk.Button(frame, text="Erstellen", command=instanzen_erstellen).grid(row=anzahl, columnspan=2)
 
     def instanzen_erstellen():
-
+        for i in range(anzahl):
+            exec(str("class"+str(i)+" = c.Klasse("+ str(eingaben[i].get())+", {})"))
         print("Erstellte Objekte:", c.klassen)
         root.quit()
 
