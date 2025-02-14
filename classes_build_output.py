@@ -1,27 +1,21 @@
 import keyboard
 import time
+#import classes_build_GUI as GUI
+import classes_build_classes as c
 
 language = "php"
 
-klassen = []
-
-class Klasse:
-    def __init__(self, name, eigen):
-        self.name = name
-        self.eigen = eigen
-        klassen.append(self)
-
-
-class1 = Klasse("Name1", {"var1":"private", "var2":"protected", "var3":"public"})
-class2 = Klasse("Name2", {"var1":"private", "var2":"protected", "var3":"public"})
+c.new_classes()
 
 time.sleep(3)
 
+#erstellte_objekte = GUI.objekt_erstellen_gui()
+
 if language == "php":
 
-    for y in range(len(klassen)):
-        keyboard.write("class " + klassen[y].name + "{" + "\n") # Zeilenumbruch?
-        eig = klassen[y].eigen
+    for y in range(len(c.klassen)):
+        keyboard.write("class " + c.klassen[y].name + "{" + "\n") # Zeilenumbruch?
+        eig = c.klassen[y].eigen
 
         for el in eig.keys():
             keyboard.write("\n" + eig[el] + " $" + el + ";\n")
@@ -39,6 +33,7 @@ if language == "php":
             # TODO: set-Methode
 
         keyboard.write("}\n\n")
-    keyboard.send("backspace")
+    for i in range(4):
+        keyboard.send("backspace")
 
 
