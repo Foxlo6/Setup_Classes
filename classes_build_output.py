@@ -29,9 +29,17 @@ if language == "php":
                 keyboard.write("this->")
             keyboard.write(el + ";\n")
             keyboard.write("}\n\n")
-            # set-Methode
-            # TODO: set-Methode
 
+            # set-Methode
+            keyboard.write("function set_" + el + "($var){" + "\n")
+            keyboard.write("if (gettype($var) != Null){\n")
+            if eig[el] != "private":
+                keyboard.write("this->")
+            keyboard.write(el + " = $var;\n")
+            keyboard.write("}\n}\n\n")
+
+        for j in range(3):
+            keyboard.send("backspace")
         keyboard.write("}\n\n")
     for i in range(4):
         keyboard.send("backspace")
