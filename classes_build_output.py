@@ -1,6 +1,5 @@
 import keyboard
 import time
-#import classes_build_GUI as GUI
 import classes_build_classes as c
 
 language = "php"
@@ -8,8 +7,6 @@ language = "php"
 c.new_classes()
 
 time.sleep(3)
-
-#erstellte_objekte = GUI.objekt_erstellen_gui()
 
 if language == "php":
 

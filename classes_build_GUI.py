@@ -1,6 +1,7 @@
 import tkinter as tk
 import classes_build_classes as c
 
+
 def objekt_erstellen_gui():
     anzahl = int
     def generiere_felder():
@@ -26,7 +27,7 @@ def objekt_erstellen_gui():
 
     def instanzen_erstellen():
         for i in range(anzahl):
-            exec(str("class"+str(i)+" = c.Klasse("+ str(eingaben[i].get())+", {})"))
+            exec(str("class"+str(i)+" = c.Klasse("+ str(eingaben[i].get().strip())+", {})"))
         print("Erstellte Objekte:", c.klassen)
         root.quit()
 
@@ -48,6 +49,10 @@ def objekt_erstellen_gui():
 
     root.mainloop()
 
-# Hauptaufruf der GUI
-objekt_erstellen_gui()
-print("Liste der Instanzen nach GUI:", c.klassen)
+
+def what_classes():
+    # Hauptaufruf der GUI
+    objekt_erstellen_gui()
+    print("Liste der Instanzen nach GUI:", c.klassen)
+
+what_classes()
