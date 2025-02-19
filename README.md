@@ -9,3 +9,7 @@ implementation in various languages, especially python and php.
  a GUI, maybe some themes?
 
 A way of building some basic object-inheritance
+
+# Dependencies
+
+Python, at this point in time, with the tkinter & keyboard libraries
