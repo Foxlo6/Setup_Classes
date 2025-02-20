@@ -10,13 +10,16 @@ time.sleep(3)
 
 if language == "php":
     for y in range(len(c.klassen)):
+        # Class-Header
         keyboard.write("class " + c.klassen[y].name + "{" + "\n")
         eig = c.klassen[y].eigen
         eig_nomen = list(eig.keys())
 
+        # Declaration
         for el in eig_nomen:
             keyboard.write("\n" + eig[el] + " $" + el + ";\n")
 
+        # Constructor
         keyboard.write("\nfunction __construct(")
         for i in range(len(eig_nomen)):
             if i != 0:
@@ -26,7 +29,6 @@ if language == "php":
         for j in range(len(eig_nomen)):
             keyboard.write("$this->set_" + eig_nomen[j] + "($v" + str(j) + ");\n")
         keyboard.write("}\n")
-
 
         keyboard.write("\n\n" + "# Space for custom functions.\n\n\n")
 
