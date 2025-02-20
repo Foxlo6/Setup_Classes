@@ -4,11 +4,11 @@ A simple script, made to build the boring part of classes during OOP. Nothing to
 
 # Planned features:
 
-implementation in various languages, especially python and php.
+- Implementation in various languages, especially python and php.
  
- a GUI, maybe some themes?
+- A GUI, maybe some themes?
 
-A way of building some basic object-inheritance
+- A way of building some basic object-inheritance
 
 # Dependencies
 
