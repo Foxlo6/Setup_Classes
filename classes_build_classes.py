@@ -10,6 +10,6 @@ class Klasse:
 
 
 def new_classes():
-    class1 = Klasse("Name1", {"var1":"private", "var2":"protected", "var3":"public"}, None)
-    class2 = Klasse("Name2", {"var1":"private", "var2":"protected", "var3":"public"}, None)
+    class1 = Klasse("Name1", {"var1":"public", "var2":"protected", "var3":"private"}, None)
+    class2 = Klasse("Name2", {"var1":"public", "var2":"protected", "var3":"private"}, None)
 
