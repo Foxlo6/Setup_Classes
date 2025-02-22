@@ -45,7 +45,7 @@ def eintrags_manager():
         untereintrag_name = tk.Entry(untereintrag_frame)
         untereintrag_name.pack(side="left")
 
-        eigenschaft_var = tk.StringVar(value="public")
+        eigenschaft_var = tk.StringVar(value="protected")
         eigenschaften_dropdown = ttk.Combobox(untereintrag_frame, textvariable=eigenschaft_var, values=["public", "protected", "privat"])
         eigenschaften_dropdown.pack(side="left")
 
@@ -103,6 +103,9 @@ def eintrags_manager():
 
     add_haupt_button = tk.Button(root, text="+ Neue Klasse", command=add_haupteintrag)
     add_haupt_button.pack()
+
+    label_warn = tk.Label(text="Wenn du auf fertig drückst, beginnt das Prgramm nach 3 s an zu schreiben.\nSei vorsichtig, welche Textzeile du ausgewählt hast!", font=("TkDefaultFont", 7))
+    label_warn.pack()
 
     # "Fertig"-Button ganz unten
     fertig_button = tk.Button(root, text="Fertig", command=speichern_und_schliessen)
