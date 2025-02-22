@@ -12,7 +12,8 @@ A simple script, made to build the boring part of classes during OOP. Nothing to
 
 # Dependencies
 
-Python, at this point in time, with the tkinter & keyboard libraries
+Nothing on Windows 11.
+Python 3.13 with the tkinter & keyboard libraries at every other OS.
 
 
 # Disclaimer
