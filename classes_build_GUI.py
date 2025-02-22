@@ -70,14 +70,17 @@ def eintrags_manager():
         nonlocal ergebnisse
         """ Speichert die Daten und schließt das Fenster """
         ergebnisse = {
-            "Eigenschaft": eigenschaft_var.get(),
-            "Eintraege": {}
+            "Sprache": eigenschaft_var.get(),
+            "Klassen": {}
         }
         for eintrag, unterlist in haupteintraege:
             name = eintrag.get().strip()
-            untereintraege = [(e[0].get(), e[1].get()) for e in unterlist if e[0].get().strip()]
+            untereintraege = {}
+            for e in unterlist:
+                if e[0].get().strip():
+                    untereintraege[e[0].get()]  = e[1].get()
             if name or untereintraege:
-                ergebnisse["Eintraege"][name if name else "(Unbenannt)"] = untereintraege
+                ergebnisse["Klassen"][name if name else "(Unbenannt)"] = untereintraege
         root.quit()
 
     root = tk.Tk()
@@ -107,10 +110,5 @@ def eintrags_manager():
 
     root.mainloop()
     return ergebnisse
-
-
-# Starte die GUI
-erg = eintrags_manager()
-print("Gespeicherte Daten:", erg)
 
 # This code was generated using ChatGPT.

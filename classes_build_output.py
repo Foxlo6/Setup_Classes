@@ -1,10 +1,21 @@
 import keyboard
 import time
 import classes_build_classes as c
+import classes_build_GUI as gui
 
-language = "php"
 
-c.new_classes()
+user_input = gui.eintrags_manager()
+
+language = user_input["Sprache"]
+
+tmp_dic_class = user_input["Klassen"]
+if tmp_dic_class == {}:
+    exit(0)
+elif type(tmp_dic_class) != dict:
+    exit("Wrong datatype in line 15.")
+else:
+    for name in tmp_dic_class:
+        c.Klasse(name, tmp_dic_class[name])
 
 time.sleep(3)
 
