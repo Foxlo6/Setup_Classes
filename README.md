@@ -13,3 +13,8 @@ A simple script, made to build the boring part of classes during OOP. Nothing to
 # Dependencies
 
 Python, at this point in time, with the tkinter & keyboard libraries
+
+
+# Disclaimer
+
+The writen output is optimized for notepad++ (php) and Pycharm Community-Edition (Python).
