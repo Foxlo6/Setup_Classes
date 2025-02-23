@@ -4,14 +4,9 @@ import classes_build_classes as c
 import classes_build_GUI as gui
 
 
-#user_input = gui.eintrags_manager()
-
-#language = user_input["Sprache"]
-
-#c.data_checknuse(user_input["Klassen"])
-
-language = "python"
-c.new_classes()
+user_input = gui.eintrags_manager()
+language = user_input["Sprache"]
+c.data_checknuse(user_input["Klassen"])
 
 time.sleep(3)
 

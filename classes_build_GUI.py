@@ -123,5 +123,3 @@ def eintrags_manager():
     return ergebnisse
 
 # This code was generated using ChatGPT.
-
-print(eintrags_manager())
