@@ -4,11 +4,11 @@ from tkinter import ttk
 
 def eintrags_manager():
     ergebnisse = {}
-    class Eintrag:
-        """ Klasse für Haupt- und Untereinträge """
-        def __init__(self, name):
-            self.name = name
-            self.untereintraege = []
+    # class Eintrag:
+     #   """ Klasse für Haupt- und Untereinträge """
+     #   def __init__(self, name):
+     #       self.name = name
+     #       self.untereintraege = []
 
     def add_haupteintrag():
         """ Fügt einen neuen Haupt-Eintrag hinzu """
@@ -45,9 +45,12 @@ def eintrags_manager():
         untereintrag_name = tk.Entry(untereintrag_frame)
         untereintrag_name.pack(side="left")
 
-        eigenschaft_var = tk.StringVar(value="protected")
-        eigenschaften_dropdown = ttk.Combobox(untereintrag_frame, textvariable=eigenschaft_var, values=["public", "protected", "privat"])
-        eigenschaften_dropdown.pack(side="left")
+        if language_var.get() == "python":
+            eigenschaft_var_intern = tk.StringVar(value="python")
+        else:
+            eigenschaft_var_intern = tk.StringVar(value="protected")
+            eigenschaften_dropdown = ttk.Combobox(untereintrag_frame, textvariable=eigenschaft_var_intern, values=["public", "protected", "privat"])
+            eigenschaften_dropdown.pack(side="left")
 
         remove_button = tk.Button(untereintrag_frame, text="-", command=lambda: remove_untereintrag(entry_widget, untereintrag_frame, untereintrag_name))
         remove_button.pack(side="left")
@@ -55,7 +58,7 @@ def eintrags_manager():
         # Untereintrag zur zugehörigen Hauptliste hinzufügen
         for eintrag, unterlist in haupteintraege:
             if eintrag == entry_widget:
-                unterlist.append((untereintrag_name, eigenschaft_var))
+                unterlist.append((untereintrag_name, eigenschaft_var_intern))
                 break
 
     def remove_untereintrag(entry_widget, untereintrag_frame, entry):
@@ -70,7 +73,7 @@ def eintrags_manager():
         nonlocal ergebnisse
         """ Speichert die Daten und schließt das Fenster """
         ergebnisse = {
-            "Sprache": eigenschaft_var.get(),
+            "Sprache": language_var.get(),
             "Klassen": {}
         }
         for eintrag, unterlist in haupteintraege:
@@ -78,7 +81,12 @@ def eintrags_manager():
             untereintraege = {}
             for e in unterlist:
                 if e[0].get().strip():
-                    untereintraege[e[0].get()]  = e[1].get()
+                    if language_var.get() == "python":
+                        untereintraege[e[0].get()] = "python"
+                    elif e[1].get() == "python":
+                        untereintraege[e[0].get()] = "public"
+                    else:
+                        untereintraege[e[0].get()]  = e[1].get()
             if name or untereintraege:
                 ergebnisse["Klassen"][name if name else "(Unbenannt)"] = untereintraege
         root.quit()
@@ -90,9 +98,9 @@ def eintrags_manager():
     top_frame.pack(fill="x", padx=10, pady=5, anchor="w")
 
     tk.Label(top_frame, text="Sprache:").pack(side="left")
-    eigenschaft_var = tk.StringVar(value="php")
-    eigenschaft_dropdown = ttk.Combobox(top_frame, textvariable=eigenschaft_var, values=["php", "python", "anderes"])
-    eigenschaft_dropdown.pack(side="left")
+    language_var = tk.StringVar(value="php")
+    language_dropdown = ttk.Combobox(top_frame, textvariable=language_var, values=["php", "python", "anderes"])
+    language_dropdown.pack(side="left")
 
     # Hauptbereich für Einträge
     main_frame = tk.Frame(root)
@@ -115,3 +123,5 @@ def eintrags_manager():
     return ergebnisse
 
 # This code was generated using ChatGPT.
+
+print(eintrags_manager())
