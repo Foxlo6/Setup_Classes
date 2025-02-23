@@ -4,18 +4,14 @@ import classes_build_classes as c
 import classes_build_GUI as gui
 
 
-user_input = gui.eintrags_manager()
+#user_input = gui.eintrags_manager()
 
-language = user_input["Sprache"]
+#language = user_input["Sprache"]
 
-tmp_dic_class = user_input["Klassen"]
-if tmp_dic_class == {}:
-    exit(0)
-elif type(tmp_dic_class) != dict:
-    exit("Wrong datatype in line 15.")
-else:
-    for name in tmp_dic_class:
-        c.Klasse(name, tmp_dic_class[name])
+#c.data_checknuse(user_input["Klassen"])
+
+language = "python"
+c.new_classes()
 
 time.sleep(3)
 
@@ -41,7 +37,7 @@ if language == "php":
             keyboard.write("$this->set_" + eig_nomen[j] + "($v" + str(j) + ");\n")
         keyboard.write("}\n")
 
-        keyboard.write("\n\n" + "# Space for custom functions.\n\n\n")
+        keyboard.write("\n\n" + "// Space for custom functions.\n\n\n")
 
         for el in eig_nomen:
             # get-Methode
@@ -63,7 +59,26 @@ if language == "php":
 
 
 elif language == "python":
-    pass
+    for y in range(len(c.klassen)):
+        # Class-Header
+        keyboard.write("class " + c.klassen[y].name + ":" + "\n")
+        eig = c.klassen[y].eigen
+        eig_nomen = list(eig.keys())
+
+        # __init__
+        keyboard.write("def __init__(") #self is added automatically
+        for el in eig_nomen:
+            keyboard.write(", " + el)
+        keyboard.write("):\n")
+        for el in eig_nomen:
+            keyboard.write("self." + el + " = " + el + "\n")
+        keyboard.send("backspace")
+
+        keyboard.write("\n" + "# Space for custom functions.\n\n\n")
+        keyboard.send("backspace")
+
+    for i in range(4):
+        keyboard.send("backspace")
 
 else:
     exit("Error: Unknown language selected.")
