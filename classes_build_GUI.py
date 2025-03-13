@@ -4,11 +4,6 @@ from tkinter import ttk
 
 def eintrags_manager():
     ergebnisse = {}
-    # class Eintrag:
-     #   """ Klasse für Haupt- und Untereinträge """
-     #   def __init__(self, name):
-     #       self.name = name
-     #       self.untereintraege = []
 
     def add_haupteintrag():
         """ Fügt einen neuen Haupt-Eintrag hinzu """
@@ -99,7 +94,7 @@ def eintrags_manager():
 
     tk.Label(top_frame, text="Sprache:").pack(side="left")
     language_var = tk.StringVar(value="php")
-    language_dropdown = ttk.Combobox(top_frame, textvariable=language_var, values=["php", "python", "anderes"])
+    language_dropdown = ttk.Combobox(top_frame, textvariable=language_var, values=["php", "python"])
     language_dropdown.pack(side="left")
 
     # Hauptbereich für Einträge
