@@ -75,5 +75,9 @@ elif language == "python":
     for i in range(4):
         keyboard.send("backspace")
 
+elif language == "java":
+    for y in range(len(c.klassen)):
+        pass
+
 else:
     exit("Error: Unknown language selected.")
