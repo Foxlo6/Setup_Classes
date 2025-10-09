@@ -10,6 +10,7 @@ c.data_checknuse(user_input["Klassen"])
 
 time.sleep(3)
 
+#TODO: Möglichkeit getter/setter explizit zu wählen statt als default.
 if language == "php":
     for y in range(len(c.klassen)):
         # Class-Header
@@ -76,8 +77,42 @@ elif language == "python":
         keyboard.send("backspace")
 
 elif language == "java":
+    #TODO: TYPEN für alles (Felix "Ein seehr großes Problem.")
+    #TODO: Einrückung anpassen
+    #TODO: CamelCase statt Snake_case in getter/setter
     for y in range(len(c.klassen)):
-        pass
+        # Class-Header
+        keyboard.write("public class " + c.klassen[y].name + " {" + "\n")
+        eig = c.klassen[y].eigen
+        eig_nomen = list(eig.keys())
+
+        # Declaration
+        for el in eig_nomen:
+            keyboard.write("\n" + eig[el] + " " + el + ";\n")
+
+        # Constructor
+        keyboard.write("\npublic " + c.klassen[y].name + "(")
+        for i in range(len(eig_nomen)):
+            if i != 0:
+                keyboard.write(", ")
+            keyboard.write("v" + str(i))
+        keyboard.write("){\n")
+        for j in range(len(eig_nomen)):
+            keyboard.write("this." + eig_nomen[j] + "(v" + str(j) + ");\n")
+        keyboard.write("}\n")
+
+        keyboard.write("\n\n" + "// Space for custom functions.\n\n\n")
+
+        for el in eig_nomen:
+            # get-Methode
+            keyboard.write("public get_" + el + "(){" + "\n")
+            keyboard.write("return this." + el + ";\n")
+            keyboard.write("}\n\n")
+
+            # set-Methode
+            keyboard.write("public set_" + el + "(var){" + "\n")
+            keyboard.write("this." + el + " = var;\n")
+            keyboard.write("}\n\n")
 
 else:
     exit("Error: Unknown language selected.")

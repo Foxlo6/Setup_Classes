@@ -2,10 +2,10 @@ klassen = []
 
 
 class Klasse:
-    def __init__(self, name, eigen, erbtvon=None):
+    def __init__(self, name, eigen, erbt_von=None):
         self.name = name
         self.eigen = eigen
-        self.erbtvon = erbtvon
+        self.erbt_von = erbt_von
         klassen.append(self)
 
 

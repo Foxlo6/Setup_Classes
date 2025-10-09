@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
+sprachen = ["php", "python", "java"];
 
 def eintrags_manager():
     ergebnisse = {}
@@ -42,8 +43,13 @@ def eintrags_manager():
 
         if language_var.get() == "python":
             eigenschaft_var_intern = tk.StringVar(value="python")
-        else:
+        elif language_var.get() == "php":
             eigenschaft_var_intern = tk.StringVar(value="protected")
+            eigenschaften_dropdown = ttk.Combobox(untereintrag_frame, textvariable=eigenschaft_var_intern,
+                                                  values=["public", "protected", "privat"])
+            eigenschaften_dropdown.pack(side="left")
+        else:
+            eigenschaft_var_intern = tk.StringVar(value="public")
             eigenschaften_dropdown = ttk.Combobox(untereintrag_frame, textvariable=eigenschaft_var_intern, values=["public", "protected", "privat"])
             eigenschaften_dropdown.pack(side="left")
 
@@ -94,7 +100,7 @@ def eintrags_manager():
 
     tk.Label(top_frame, text="Sprache:").pack(side="left")
     language_var = tk.StringVar(value="php")
-    language_dropdown = ttk.Combobox(top_frame, textvariable=language_var, values=["php", "python"])
+    language_dropdown = ttk.Combobox(top_frame, textvariable=language_var, values=sprachen)
     language_dropdown.pack(side="left")
 
     # Hauptbereich für Einträge
